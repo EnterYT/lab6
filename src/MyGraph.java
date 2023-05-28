@@ -83,4 +83,10 @@ public class MyGraph<Vertex> {
             }
         }
     }
+
+    public void BFS(Vertex start){
+        validateVertex(start);
+        Map<Vertex, Boolean> visited = new HashMap<>();
+
+    }
 }
