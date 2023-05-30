@@ -1,7 +1,6 @@
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import org.w3c.dom.Node;
+
+import java.util.*;
 
 public class MyGraph<Vertex> {
     private Map<Vertex, List<Vertex>> list;
@@ -87,6 +86,19 @@ public class MyGraph<Vertex> {
     public void BFS(Vertex start){
         validateVertex(start);
         Map<Vertex, Boolean> visited = new HashMap<>();
+        for (Vertex vertex:list.keySet()) {
+            visited.put(vertex, false);
+        }
+        BFSHelper(start, visited);
+    }
 
+    private void BFSHelper(Vertex vertex, Map<Vertex, Boolean> visited){
+        visited.put(vertex, true);
+        System.out.print(vertex + " ");
+        for (Vertex neighbor : list.get(vertex)) {
+            if (!visited.get(neighbor)) {
+                DFSHelper(neighbor, visited);
+            }
+        }
     }
 }
