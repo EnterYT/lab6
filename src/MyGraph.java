@@ -83,10 +83,34 @@ public class MyGraph<Vertex> {
         }
     }
 
-    public static ArrayList<Integer> BFS(int V, ArrayList<boolean> adj[]){
-        ArrayList<Boolean> vis = new ArrayList<>(V);
+    public static ArrayList<Integer> BFS(int V, ArrayList<Boolean> adj[]){
+        ArrayList<Boolean> visited = new ArrayList<>(V);
         ArrayList<Integer> bfs_traversal = new ArrayList<>();
-        for (int i = 0; i < V; ++i) {}
+        for (int i = 0; i < V; ++i) {
+            // To check if already visited
+            if (visited.get(i) == false) {
+                Queue<Integer> q = new LinkedList<>();
+                visited.set(i, true);
+                q.add(i);
+
+                // BFS starting from ith node
+                while (!q.isEmpty()) {
+                    int g_node = q.peek();
+                    q.poll();
+                    bfs_traversal.add(g_node);
+                    for (int it = 0;
+                         it < adj[g_node].toArray().length;
+                         it++) {
+                        if (adj[g_node].get(it) == true) {
+                            if (visited.get(it) == false) {
+                                visited.set(it, true);
+                                q.add(it);
+                            }
+                        }
+                    }
+                }
+            }
+        }
         return bfs_traversal;
     }
 }
