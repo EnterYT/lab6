@@ -85,15 +85,15 @@ public class MyGraph<Vertex> {
 
     public void BFS(Vertex start){
         validateVertex(start);
-        Map<Vertex, Boolean> visited = new HashMap<>();
+        ArrayList<Vertex> visited = new ArrayList<>();
         for (Vertex vertex:list.keySet()) {
-            visited.put(vertex, false);
+            visited.add(vertex);
         }
         BFSHelper(start, visited);
     }
 
-    private void BFSHelper(Vertex vertex, Map<Vertex, Boolean> visited){
-        visited.put(vertex, true);
+    private void BFSHelper(Vertex vertex, ArrayList<Vertex> visited){
+        visited.add(vertex, true);
         System.out.print(vertex + " ");
         for (Vertex neighbor : list.get(vertex)) {
             if (!visited.get(neighbor)) {
