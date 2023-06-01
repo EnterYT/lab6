@@ -83,7 +83,12 @@ public class MyGraph<Vertex> {
         }
     }
 
-    public static ArrayList<Integer> BFS(int V, ArrayList<Boolean> adj[]){
+    public ArrayList<Vertex> BFS(Vertex start){
+        ArrayList<Boolean> adj = new ArrayList<>();
+        return BFSHelper((int) start, adj);
+    }
+
+    public static ArrayList<Integer> BFSHelper(int V, ArrayList<Boolean>[] adj){
         ArrayList<Boolean> visited = new ArrayList<>(V);
         ArrayList<Integer> bfs_traversal = new ArrayList<>();
         for (int i = 0; i < V; ++i) {

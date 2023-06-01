@@ -18,5 +18,6 @@ public class Main {
         System.out.println(temp.hasEdge(1,2));
         System.out.println(temp.getNeighbors(1));
         temp.DFS(1);
+        temp.BFS(1);
     }
 }
