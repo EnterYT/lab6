@@ -83,22 +83,10 @@ public class MyGraph<Vertex> {
         }
     }
 
-    public void BFS(Vertex start){
-        validateVertex(start);
-        ArrayList<Vertex> visited = new ArrayList<>();
-        for (Vertex vertex:list.keySet()) {
-            visited.add(vertex);
-        }
-        BFSHelper(start, visited);
-    }
-
-    private void BFSHelper(Vertex vertex, ArrayList<Vertex> visited){
-        visited.add(vertex, true);
-        System.out.print(vertex + " ");
-        for (Vertex neighbor : list.get(vertex)) {
-            if (!visited.get(neighbor)) {
-                DFSHelper(neighbor, visited);
-            }
-        }
+    public static ArrayList<Integer> BFS(int V, ArrayList<boolean> adj[]){
+        ArrayList<Boolean> vis = new ArrayList<>(V);
+        ArrayList<Integer> bfs_traversal = new ArrayList<>();
+        for (int i = 0; i < V; ++i) {}
+        return bfs_traversal;
     }
 }
