@@ -84,25 +84,25 @@ public class MyGraph<Vertex> {
     }
 
     public void BFS(Vertex start){
-        ArrayList<Vertex> bfs_list = new ArrayList<>();
+        ArrayList<Vertex> queue = new ArrayList<>();
+        queue.add(start);
         Map<Vertex, Boolean> visited = new HashMap<>();
         for (Vertex vertex:list.keySet()){
             visited.put(vertex, false);
-            bfs_list.add(vertex);
         }
         System.out.println();
-        System.out.println("BFS cointains: " + bfs_list);
-        BFSHelper(start,visited);
+        System.out.println(BFSHelper(start,visited, queue));
     }
 
-    private void BFSHelper(Vertex vertex, Map<Vertex, Boolean> visited) {
+    private ArrayList<Vertex> BFSHelper(Vertex vertex, Map<Vertex, Boolean> visited, ArrayList<Vertex> queue) {
         visited.put(vertex, true);
-        System.out.print(vertex + " ");
-        for (Vertex neighbor : list.get(vertex)) {
+        for (Vertex neighbor : getNeighbors(vertex)) {
             if (!visited.get(neighbor)) {
-                BFSHelper(neighbor, visited);
+                BFSHelper(neighbor, visited, queue);
+                queue.add(neighbor);
             }
         }
+        return queue;
     }
 
 
