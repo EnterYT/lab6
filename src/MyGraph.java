@@ -84,10 +84,14 @@ public class MyGraph<Vertex> {
     }
 
     public void BFS(Vertex start){
+        ArrayList<Vertex> bfs_list = new ArrayList<>();
         Map<Vertex, Boolean> visited = new HashMap<>();
         for (Vertex vertex:list.keySet()){
             visited.put(vertex, false);
+            bfs_list.add(vertex);
         }
+        System.out.println();
+        System.out.println("BFS cointains: " + bfs_list);
         BFSHelper(start,visited);
     }
 
