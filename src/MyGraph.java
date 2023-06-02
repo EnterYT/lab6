@@ -83,39 +83,23 @@ public class MyGraph<Vertex> {
         }
     }
 
-    public ArrayList<Vertex> BFS(Vertex start){
-        ArrayList<Boolean> adj = new ArrayList<>();
-        return BFSHelper((int) start, adj);
+    public void BFS(Vertex start){
+        Map<Vertex, Boolean> visited = new HashMap<>();
+        for (Vertex vertex:list.keySet()){
+            visited.put(vertex, false);
+        }
+        BFSHelper(start,visited);
     }
 
-    public static ArrayList<Integer> BFSHelper(int V, ArrayList<Boolean>[] adj){
-        ArrayList<Boolean> visited = new ArrayList<>(V);
-        ArrayList<Integer> bfs_traversal = new ArrayList<>();
-        for (int i = 0; i < V; ++i) {
-            // To check if already visited
-            if (visited.get(i) == false) {
-                Queue<Integer> q = new LinkedList<>();
-                visited.set(i, true);
-                q.add(i);
-
-                // BFS starting from ith node
-                while (!q.isEmpty()) {
-                    int g_node = q.peek();
-                    q.poll();
-                    bfs_traversal.add(g_node);
-                    for (int it = 0;
-                         it < adj[g_node].toArray().length;
-                         it++) {
-                        if (adj[g_node].get(it) == true) {
-                            if (visited.get(it) == false) {
-                                visited.set(it, true);
-                                q.add(it);
-                            }
-                        }
-                    }
-                }
+    private void BFSHelper(Vertex vertex, Map<Vertex, Boolean> visited) {
+        visited.put(vertex, true);
+        System.out.print(vertex + " ");
+        for (Vertex neighbor : list.get(vertex)) {
+            if (!visited.get(neighbor)) {
+                BFSHelper(neighbor, visited);
             }
         }
-        return bfs_traversal;
     }
+
+
 }
